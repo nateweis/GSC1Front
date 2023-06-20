@@ -2,7 +2,7 @@ import React from 'react';
 
 const App = () => {
   return(
-    <div>Blank Canvas</div>
+    <div>Still Blank Canvas that works </div>
   )
 }
 
