@@ -1,8 +1,12 @@
 import React from 'react';
 
+import SocialMediaBar from './components/SocialMediaBar'
+
 const App = () => {
   return(
-    <div>Still Blank Canvas that works </div>
+    <div>
+        <SocialMediaBar />
+    </div>
   )
 }
 
