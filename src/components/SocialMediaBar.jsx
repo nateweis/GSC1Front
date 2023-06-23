@@ -1,15 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
+import {ReactComponent as FbIcon} from '../downloads/icons8-facebook.svg'
+import {ReactComponent as EmIcon} from '../downloads/email-svgrepo-com.svg'
+import {ReactComponent as InIcon} from '../downloads/icons8-instagram.svg'
+import {ReactComponent as TwIcon} from '../downloads/icons8-twitter.svg'
 
 const SocialMediaBar = () => {
   return (
     <Container>
         <Left> <Logo>Web<Highlight>Site</Highlight></Logo> </Left>
         <Right>
-            <SM xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 30 30">    
-              <path d="M12,27V15H8v-4h4V8.852C12,4.785,13.981,3,17.361,3c1.619,0,2.475,0.12,2.88,0.175V7h-2.305C16.501,7,16,7.757,16,9.291V11 h4.205l-0.571,4H16v12H12z"/>
-            </SM>
-
+            <FbIcon />
+            <EmIcon />
+            <InIcon />
+            <TwIcon />
         </Right>
     </Container>
   )
@@ -43,6 +47,7 @@ const Logo = styled.a`
     font-weight: 800;
     font-size: 30px;
     line-height: 1;
+    cursor: pointer;
    // border: 1px solid black;
 `
 const Highlight = styled.span`
@@ -51,15 +56,31 @@ const Highlight = styled.span`
 
 // Righ Side =================
 const Right = styled.div`
-    background-color: #785abe52;
+    //background-color: #785abe52;
     flex:1;
     width:100%;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    svg {
+        width: 20px;
+        height: 20px;
+        fill: #4d4d4d;
+        border: 1px solid rgba(0,0,0,.2);
+        margin: 0 4px;
+        padding: 7px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        &:hover {
+            background-color: #fdbe34;
+            fill: white;
+            border-color: #fdbe34;
+        }
+  }
 `
 
-const SM = styled.svg`
-    width: 20px;
-    height: 20px; 
-`
+
 
 export default SocialMediaBar
