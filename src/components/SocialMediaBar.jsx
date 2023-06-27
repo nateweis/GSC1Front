@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import {tablet, desc, bigScreen} from '../responsive'
 import {ReactComponent as FbIcon} from '../downloads/icons8-facebook.svg'
 import {ReactComponent as EmIcon} from '../downloads/email-svgrepo-com.svg'
 import {ReactComponent as InIcon} from '../downloads/icons8-instagram.svg'
@@ -21,26 +22,30 @@ const SocialMediaBar = () => {
 
 // ///// Style ////////
 const Container = styled.div` 
-    height: 100px ;
+    height: 120px ;
    // border: 1px solid black;
     width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
     max-width: 720px;
     display: flex;
     align-items: center;
     justify-content: center;
+    ${desc({ maxWidth: '90%'})};
 `
-// Left Side ============
-const Left = styled.div`
-   // background-color: #5c9da155;
+const Sides = styled.div`
     flex:1;
     width:100%;
     height: 100%;
     display: flex;
     align-items: center;
+    //border: 1px solid blue;
+    padding:0 5%;
+    
+`
+// Left Side ============
+const Left = styled(Sides)`
+   // background-color: #5c9da155;
 `
 const Logo = styled.a`
      color: #000000;
@@ -55,13 +60,8 @@ const Highlight = styled.span`
 `
 
 // Righ Side =================
-const Right = styled.div`
+const Right = styled(Sides)`
     //background-color: #785abe52;
-    flex:1;
-    width:100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
     justify-content: flex-end;
     svg {
         width: 20px;
