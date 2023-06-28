@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import {tablet, desc, bigScreen} from '../responsive'
+import {desc} from '../responsive'
 import {ReactComponent as FbIcon} from '../downloads/icons8-facebook.svg'
 import {ReactComponent as EmIcon} from '../downloads/email-svgrepo-com.svg'
 import {ReactComponent as InIcon} from '../downloads/icons8-instagram.svg'

@@ -1,11 +1,11 @@
 import React from 'react';
 
-import SocialMediaBar from './components/SocialMediaBar'
+import Home from './pages/Home'
 
 const App = () => {
   return(
     <div>
-        <SocialMediaBar />
+        <Home />
     </div>
   )
 }
