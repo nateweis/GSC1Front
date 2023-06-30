@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import {tablet, desc, bigScreen} from '../responsive'
 import {ReactComponent as ILines} from '../downloads/lines-svgrepo-com.svg'
 
 const Nav = () => {
+  const [screen, setScreen] = useState('home');
+
   return (
     <Container>
         <Left>
@@ -11,11 +13,21 @@ const Nav = () => {
 
             <FullSize>
                 <LinkContainer>
-                    <LinksWrapper> <Link>Home</Link> </LinksWrapper>
-                    <LinksWrapper> <Link>About</Link> </LinksWrapper>
-                    <LinksWrapper> <Link>Projects</Link> </LinksWrapper>
-                    <LinksWrapper> <Link>Blog</Link> </LinksWrapper>
-                    <LinksWrapper> <Link>Contact</Link> </LinksWrapper>
+                    <LinksWrapper active={screen == 'home'? true: false} onClick={()=> setScreen('home')}> 
+                        <Link>Home</Link> 
+                    </LinksWrapper>
+                    <LinksWrapper active={screen == 'about'? true: false} onClick={()=> setScreen('about')}> 
+                        <Link>About</Link> 
+                    </LinksWrapper>
+                    <LinksWrapper active={screen == 'projects'? true: false} onClick={()=> setScreen('projects')}> 
+                        <Link>Projects</Link> 
+                    </LinksWrapper>
+                    <LinksWrapper active={screen == 'blog'? true: false} onClick={()=> setScreen('blog')}> 
+                        <Link>Blog</Link> 
+                    </LinksWrapper>
+                    <LinksWrapper active={screen == 'contact'? true: false} onClick={()=> setScreen('contact')}> 
+                        <Link>Contact</Link> 
+                    </LinksWrapper>
                 </LinkContainer>
             </FullSize>
         </Left>
@@ -77,20 +89,35 @@ const LinkContainer = styled.div`
     margin: 0 5%;
 `
 const LinksWrapper = styled.div`
+    background-color: ${props => props.active && 'orange'};
+    color: ${props => props.active && 'black'};
     cursor: pointer;
-    border: 1px solid white;
+    //border: 1px solid white;
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow:hidden;
+    //transition: 1s all ease;
+    position: relative;
     //height: 100%;
-    &:hover{
+    &::before{
         background-color: orange;
-        color: black;
+        content: "";
+        width: 0;
+        height: 100%;
+        position: absolute;
+        //z-index: -10;
+        transition:  0.3s all ease;
+    };
+    &:hover{color: black;};
+    &:hover::before{
+        width: 100%;
     }
 `
 const Link = styled.a`
-    
+     z-index: 2;
+     
 `
 
 // Right side
