@@ -5,40 +5,49 @@ import {ReactComponent as ILines} from '../downloads/lines-svgrepo-com.svg'
 
 const Nav = () => {
   const [screen, setScreen] = useState('home');
+  const [showLinks, setShowLinks] = useState(false);
 
   return (
     <Container>
-        <Left>
-            <LinkBtn><StyledIcon /></LinkBtn>
+        <BarWrapper>
+            <Left>
+                <LinkBtn onClick={()=> setShowLinks(!showLinks)}> <StyledIcon /></LinkBtn>
 
-            <FullSize>
-                <LinkContainer>
-                    <LinksWrapper active={screen == 'home'? true: false} onClick={()=> setScreen('home')}> 
-                        <Link>Home</Link> 
-                    </LinksWrapper>
-                    <LinksWrapper active={screen == 'about'? true: false} onClick={()=> setScreen('about')}> 
-                        <Link>About</Link> 
-                    </LinksWrapper>
-                    <LinksWrapper active={screen == 'projects'? true: false} onClick={()=> setScreen('projects')}> 
-                        <Link>Projects</Link> 
-                    </LinksWrapper>
-                    <LinksWrapper active={screen == 'blog'? true: false} onClick={()=> setScreen('blog')}> 
-                        <Link>Blog</Link> 
-                    </LinksWrapper>
-                    <LinksWrapper active={screen == 'contact'? true: false} onClick={()=> setScreen('contact')}> 
-                        <Link>Contact</Link> 
-                    </LinksWrapper>
-                </LinkContainer>
-            </FullSize>
-        </Left>
+                <FullSize>
+                    <LinkContainer>
+                        <LinksWrapper active={screen == 'home'? true: false} onClick={()=> setScreen('home')}> 
+                            <Link>Home</Link> 
+                        </LinksWrapper>
+                        <LinksWrapper active={screen == 'about'? true: false} onClick={()=> setScreen('about')}> 
+                            <Link>About</Link> 
+                        </LinksWrapper>
+                        <LinksWrapper active={screen == 'projects'? true: false} onClick={()=> setScreen('projects')}> 
+                            <Link>Projects</Link> 
+                        </LinksWrapper>
+                        <LinksWrapper active={screen == 'blog'? true: false} onClick={()=> setScreen('blog')}> 
+                            <Link>Blog</Link> 
+                        </LinksWrapper>
+                        <LinksWrapper active={screen == 'contact'? true: false} onClick={()=> setScreen('contact')}> 
+                            <Link>Contact</Link> 
+                        </LinksWrapper>
+                    </LinkContainer>
+                </FullSize>
+            </Left>
 
-        <Right></Right>
+            <Right></Right>
+        </BarWrapper>
+
+        <ExtendedMobileLinks show = {showLinks}></ExtendedMobileLinks>
+        
     </Container>
   )
 }
 
 const Container = styled.div`
     width: 100%;
+    
+`
+const BarWrapper = styled.div`
     height: 65px;
     background-color: black;
     display: flex;
@@ -46,6 +55,7 @@ const Container = styled.div`
     justify-content: center;
     ${desc({backgroundColor: '#00043c', height: '85px'})}
 `
+
 const Sides = styled.div`
     height: 100%;
     flex: 1;
@@ -118,6 +128,13 @@ const LinksWrapper = styled.div`
 const Link = styled.a`
      z-index: 2;
      
+`
+
+const ExtendedMobileLinks = styled.div`
+    width: 100%;
+    min-height: 150px;
+    background-color: black;
+    display: ${props => props.show? 'block': 'none'}
 `
 
 // Right side
