@@ -37,7 +37,13 @@ const Nav = () => {
             <Right></Right>
         </BarWrapper>
 
-        <ExtendedMobileLinks show = {showLinks}></ExtendedMobileLinks>
+        <ExtendedMobileLinks show = {showLinks}>
+            <MLinks active={screen == 'home'? true: false} onClick={()=> setScreen('home')}>Home</MLinks>
+            <MLinks active={screen == 'about'? true: false} onClick={()=> setScreen('about')}>About</MLinks>
+            <MLinks active={screen == 'projects'? true: false} onClick={()=> setScreen('projects')}>Projects</MLinks>
+            <MLinks active={screen == 'blog'? true: false} onClick={()=> setScreen('blog')}>Blog</MLinks>
+            <MLinks active={screen == 'contact'? true: false} onClick={()=> setScreen('contact')}>Contact</MLinks>
+        </ExtendedMobileLinks>
         
     </Container>
   )
@@ -45,6 +51,7 @@ const Nav = () => {
 
 const Container = styled.div`
     width: 100%;
+    overflow: hidden;
     
 `
 const BarWrapper = styled.div`
@@ -53,6 +60,8 @@ const BarWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    z-index: 2;
     ${desc({backgroundColor: '#00043c', height: '85px'})}
 `
 
@@ -132,9 +141,22 @@ const Link = styled.a`
 
 const ExtendedMobileLinks = styled.div`
     width: 100%;
-    min-height: 150px;
+    height: ${props => props.show? '200px': '0px'};
     background-color: black;
-    display: ${props => props.show? 'block': 'none'}
+    display: flex;
+    flex-direction: column;
+    transition: .5s all ease;
+    position: relative;
+    justify-content: space-around;
+    padding-left: 40px;
+   // z-index: -5;
+    //transform: ${props => props.show? 'translate(0px, 0px)': 'translate(0px, -200px)'};
+`
+
+const MLinks = styled.div`
+    color: ${props => props.active? 'orange': '#a09d9d'};
+    cursor: pointer;
+    &:hover{color: white;};
 `
 
 // Right side
