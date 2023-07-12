@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import {tablet, desc, bigScreen} from '../responsive'
 import {ReactComponent as ILines} from '../downloads/lines-svgrepo-com.svg'
@@ -6,6 +6,16 @@ import {ReactComponent as ILines} from '../downloads/lines-svgrepo-com.svg'
 const Nav = () => {
   const [screen, setScreen] = useState('home');
   const [showLinks, setShowLinks] = useState(false);
+
+
+//   const handleResize = () => {
+//     console.log(window.innerWidth)
+//    // window.innerWidth > 840 && setShowLinks(false)
+//   }
+
+//   useEffect(() => {
+//     window.addEventListener("resize", handleResize, false);
+//   }, []);
 
   return (
     <Container>
@@ -37,7 +47,7 @@ const Nav = () => {
             <Right></Right>
         </BarWrapper>
 
-        <ExtendedMobileLinks show = {showLinks}>
+        <ExtendedMobileLinks show = {showLinks} >
             <MLinks active={screen == 'home'? true: false} onClick={()=> setScreen('home')}>Home</MLinks>
             <MLinks active={screen == 'about'? true: false} onClick={()=> setScreen('about')}>About</MLinks>
             <MLinks active={screen == 'projects'? true: false} onClick={()=> setScreen('projects')}>Projects</MLinks>
@@ -151,6 +161,7 @@ const ExtendedMobileLinks = styled.div`
     padding-left: 40px;
    // z-index: -5;
     //transform: ${props => props.show? 'translate(0px, 0px)': 'translate(0px, -200px)'};
+    ${desc({display: 'none'})}
 `
 
 const MLinks = styled.div`
