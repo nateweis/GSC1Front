@@ -44,7 +44,11 @@ const Nav = () => {
                 </FullSize>
             </Left>
 
-            <Right></Right>
+            <Right>
+                <InputWrapper>
+                    <SearchBar placeholder='Search' />
+                </InputWrapper>
+            </Right>
         </BarWrapper>
 
         <ExtendedMobileLinks show = {showLinks} >
@@ -172,7 +176,25 @@ const MLinks = styled.div`
 
 // Right side
 const Right = styled(Sides)`
-    background-color: green;
+   //border: 1px solid white;
+`
+const InputWrapper = styled.div`
+    //background-color: pink;
+    width: 100%;
+    height: 100%;
+    position: relative;
+`
+const SearchBar = styled.input`
+    display: inline-block;
+    height: 50%;
+    border-radius: 5px;
+    width: 230px;
+    padding-left: 5%;
+    margin-right: 5%;
+    margin-top: 12px;
+    font-size: 14px;
+    ${desc({marginLeft: '10%', marginTop: '15px'})};
+    &:focus-visible{outline: none;};
 `
 
 
